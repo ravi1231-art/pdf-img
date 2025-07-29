@@ -81,5 +81,18 @@ async def save_edited_image(request: Request):
     return StreamingResponse(output_buffer, media_type="image/png")
 
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
+# ✅ Mount the static folder (update path if needed)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# ✅ Serve index.html at root
+@app.get("/", response_class=FileResponse)
+async def serve_index():
+    return FileResponse("static/index.html")
+
+# ✅ Optional: Serve edit_screen.html at separate route
+@app.get("/editor", response_class=FileResponse)
+async def serve_editor():
+    return FileResponse("static/edit_screen.html")
+
