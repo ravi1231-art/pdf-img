@@ -20,10 +20,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ Root route to avoid 404 on Render
-@app.get("/", response_class=HTMLResponse)
-def home():
-    return "<h2>🚀 FastAPI PDF to Image App is Running Successfully ✅</h2>"
 
 # ✅ Poppler and output folder setup
 POPPLER_PATH = r"C:\Users\chaud\Downloads\Release-24.08.0-0 (1)\poppler-24.08.0\Library\bin"
