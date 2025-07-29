@@ -92,3 +92,10 @@ async def serve_index():
 async def serve_editor():
     return FileResponse("static/edit_screen.html")
 
+from fastapi.responses import FileResponse
+
+@app.get("/edit_screen", response_class=FileResponse)
+async def get_edit_screen():
+    return FileResponse("static/edit_screen.html")
+
+
