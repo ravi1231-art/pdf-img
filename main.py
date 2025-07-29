@@ -84,7 +84,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # ✅ Serve index.html at root
 @app.get("/", response_class=FileResponse)
-async def serve_index():
+async def get_index():
     return FileResponse("static/index.html")
 
 @app.get("/edit_screen", response_class=FileResponse)
