@@ -79,3 +79,7 @@ async def save_edited_image(request: Request):
     output_buffer.seek(0)
 
     return StreamingResponse(output_buffer, media_type="image/png")
+
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/", StaticFiles(directory=".", html=True), name="static")
