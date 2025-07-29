@@ -87,13 +87,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def serve_index():
     return FileResponse("static/index.html")
 
-# ✅ Optional: Serve edit_screen.html at separate route
-@app.get("/editor", response_class=FileResponse)
-async def serve_editor():
-    return FileResponse("static/edit_screen.html")
-
-from fastapi.responses import FileResponse
-
 @app.get("/edit_screen", response_class=FileResponse)
 async def get_edit_screen():
     return FileResponse("static/edit_screen.html")
